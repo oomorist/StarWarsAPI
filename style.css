@@ -1,0 +1,81 @@
+:root{
+    --YSW: #FFE81F;
+    --BSW:#000000;
+    font-family: Times; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    color: var(--YSW)
+}
+
+.navbar {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: #1b1b1b;
+    padding: 5px;
+
+}
+
+.link-page {
+    text-decoration: none;
+    font-size: 16px bold;
+    margin: 5px;
+
+}
+
+.container {
+    background: var(--BSW);
+}
+
+.star-wars-img{
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.films {
+
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 250px;
+    margin: 3px;
+    font-size:20px;
+
+    cursor: pointer;
+    transition: all 0.1s;
+
+}
+
+.card:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    border: 2px solid #000000;
+    border-radius: 11px;
+}
+
+.p {
+    background-color: var(--YSW)
+}
+
+.inside-card {
+    padding: 10px;
+    color: var(--BSW);
+    background-color:var(--YSW);
+    text-align: center;
+    border-radius: 7px;
+}
