@@ -1,44 +1,27 @@
+const getPeopleUrl = id => `http://swapi.dev/api/people/${id}`
 
-var starWarsFilmList = document.querySelector('.films');
+const generatePeoplePromises = () => Array(82).fill().map((_, index) => 
+    fetch (getPeopleUrl(index + 1)).then(response => response.json()))
 
-fetch('https://swapi.dev/api/people/') 
-.then(function(response) {   
-  return response.json(); 
-})
+const generateHTML = peoples => peoples.reduce((accumulator, {name, id }) => {
 
-.then(function(json) {
-  let films = json.results;
- 
+    accumulator += `
+        <div class="card">
+            <h2 class="card">
+            <p class=inside-card>${name}</p>
+            </h2>
+        </div>  
+    `
+    return accumulator
+}, '')
 
-  for(f of films) {
-    let listItem = document.createElement('div');
-    listItem.className = 'card'; 
-    listItem.innerHTML = '<p class="inside-card">' + f.name + '</p>'; 
-    starWarsFilmList.appendChild(listItem);
-  }
+const insertPeoplesIntoPage = peoples => {
+    const ul = document.querySelector('[data-js="people-card"]')
+    ul.innerHTML = peoples
+}
 
-});  
-/* SCRIPT FUNCIONAL
-var starWarsFilmList = document.querySelector('.films');
+const peoplePromises = generatePeoplePromises()
 
-fetch('https://swapi.dev/api/people/') 
-.then(function(response) {   
-  return response.json(); 
-})
-
-.then(function(json) {
-  let films = json.results;
- 
-
-  for(f of films) {
-    let listItem = document.createElement('div');
-    listItem.className = 'card'; 
-    listItem.innerHTML = '<p class="inside-card">' + f.name + '</p>'; 
-    starWarsFilmList.appendChild(listItem);
-  }
-
-});
-
-*/
-
-
+Promise.all(peoplePromises)
+    .then(generateHTML)
+    .then(insertPeoplesIntoPage)

@@ -29,19 +29,37 @@
 
 }
 
-.container {
+.general{
     background: var(--BSW);
 }
 
-.star-wars-img{
-    height: 500px;
+.title{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 10px;
+}
+
+.container {
+    background: var(--BSW);
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.star-wars-img{
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: -2%;
 
 }
 
-.films {
+.people-card {
 
     width: auto;
     display: flex;
